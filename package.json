@@ -1,0 +1,50 @@
+{
+  "name": "mdc-stencil",
+  "version": "0.0.1",
+  "description": "Stencil Component Starter",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "es2015": "dist/esm/index.mjs",
+  "es2017": "dist/esm/index.mjs",
+  "types": "dist/types/index.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "collection:main": "dist/collection/index.js",
+  "unpkg": "dist/mdc-stencil/mdc-stencil.js",
+  "files": [
+    "dist/",
+    "loader/"
+  ],
+  "scripts": {
+    "build": "stencil build --docs",
+    "start": "stencil build --dev --watch --serve",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "generate": "stencil generate"
+  },
+  "dependencies": {
+    "@material/button": "^3.2.0",
+    "@material/card": "^3.2.0",
+    "@material/checkbox": "^3.2.0",
+    "@material/chips": "^3.2.0",
+    "@material/dialog": "^3.2.0",
+    "@material/drawer": "^3.2.0",
+    "@material/floating-label": "^3.2.0",
+    "@material/form-field": "^3.2.0",
+    "@material/icon-button": "^3.2.0",
+    "@material/layout-grid": "^3.1.0",
+    "@material/linear-progress": "^3.2.0",
+    "@material/list": "^3.2.0",
+    "@material/radio": "^3.2.0",
+    "@material/select": "^3.2.0",
+    "@material/snackbar": "^3.2.0",
+    "@material/switch": "^3.2.0",
+    "@material/textfield": "^3.2.0",
+    "@material/top-app-bar": "^3.2.0",
+    "@material/typography": "^3.1.0"
+  },
+  "devDependencies": {
+    "@stencil/core": "1.8.3",
+    "@stencil/sass": "~1.0.1"
+  },
+  "license": "MIT"
+}
