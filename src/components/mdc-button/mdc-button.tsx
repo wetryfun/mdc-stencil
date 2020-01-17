@@ -1,23 +1,51 @@
-import { MDCRipple } from '@material/ripple';
-import { Component, ComponentInterface, h, Method, Prop } from '@stencil/core';
-import { MdcButton as Button, MdcButtonProps } from '.';
+import { MDCRipple } from "@material/ripple";
+import { Component, ComponentInterface, h, Method, Prop } from "@stencil/core";
+import { MdcButton as Button, MdcButtonProps } from ".";
 
 @Component({
-  tag: 'mdc-button',
-  styleUrl: 'mdc-button.scss',
+  tag: "mdc-button",
+  styleUrl: "mdc-button.scss",
   shadow: false
 })
 export class MdcButton implements ComponentInterface {
-  @Prop() disabled: MdcButtonProps['disabled'];
-  @Prop() name: MdcButtonProps['name'];
-  @Prop() type: MdcButtonProps['type'];
-  @Prop() value: MdcButtonProps['value'];
-  @Prop() raised?: MdcButtonProps['raised'];
-  @Prop() unelevated?: MdcButtonProps['unelevated'];
-  @Prop() outlined?: MdcButtonProps['outlined'];
-  @Prop() dense?: MdcButtonProps['dense'];
+  /**
+   * Enables raised variant.
+   */
+  @Prop() raised: MdcButtonProps["raised"] = false;
+  /**
+   * Enables unelevated variant.
+   */
+  @Prop() unelevated: MdcButtonProps["unelevated"] = false;
+  /**
+   * Enables outlined variant.
+   */
+  @Prop() outlined: MdcButtonProps["outlined"] = false;
+  /**
+   * Enables dense variant.
+   */
+  @Prop() dense: MdcButtonProps["dense"] = false;
+  /**
+   * Icon to render within root element.
+   */
+  @Prop() icon: MdcButtonProps["icon"];
+  /**
+   * Icon to render on the right side of the element
+   */
+  @Prop() trailingIcon: MdcButtonProps["trailingIcon"];
+  /**
+   * Disables button if true.
+   */
+  @Prop() disabled: MdcButtonProps["disabled"] = false;
+  /**
+   * Sets a hyperlink & uses anchor tag instead of a button.
+   */
+  @Prop() href: MdcButtonProps["href"];
+  @Prop() name: MdcButtonProps["name"];
+  @Prop() type: MdcButtonProps["type"];
+  @Prop() value: MdcButtonProps["value"];
+  @Prop() mdcClass: MdcButtonProps["class"];
 
-  private button: HTMLButtonElement;
+  private button: HTMLButtonElement | HTMLAnchorElement;
   private mdcRipple: MDCRipple;
 
   @Method()
@@ -42,27 +70,35 @@ export class MdcButton implements ComponentInterface {
 
   render() {
     const {
-      disabled,
-      name,
-      type,
-      value,
       raised,
       unelevated,
       outlined,
-      dense
+      dense,
+      icon,
+      trailingIcon,
+      href,
+      disabled,
+      mdcClass,
+      name,
+      type,
+      value
     } = this;
     return (
       <Button
         ref={el => (this.button = el)}
         {...{
-          disabled,
-          name,
-          type,
-          value,
           raised,
           unelevated,
           outlined,
-          dense
+          dense,
+          icon,
+          trailingIcon,
+          href,
+          disabled,
+          class: mdcClass,
+          name,
+          type,
+          value
         }}
       >
         <slot />

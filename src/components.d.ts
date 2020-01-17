@@ -11,6 +11,10 @@ import {
   MdcButtonProps,
 } from './components/mdc-button';
 import {
+  MdcCardMediaProps,
+  MdcCardProps,
+} from './components/mdc-card';
+import {
   MdcCheckboxProps,
 } from './components/mdc-checkbox';
 import {
@@ -37,15 +41,55 @@ import {
 
 export namespace Components {
   interface MdcButton {
-    'dense'?: MdcButtonProps['dense'];
-    'disabled': MdcButtonProps['disabled'];
+    /**
+    * Enables dense variant.
+    */
+    'dense': MdcButtonProps["dense"];
+    /**
+    * Disables button if true.
+    */
+    'disabled': MdcButtonProps["disabled"];
+    /**
+    * Sets a hyperlink & uses anchor tag instead of a button.
+    */
+    'href': MdcButtonProps["href"];
+    /**
+    * Icon to render within root element.
+    */
+    'icon': MdcButtonProps["icon"];
     'layout': () => Promise<void>;
-    'name': MdcButtonProps['name'];
-    'outlined'?: MdcButtonProps['outlined'];
-    'raised'?: MdcButtonProps['raised'];
-    'type': MdcButtonProps['type'];
-    'unelevated'?: MdcButtonProps['unelevated'];
-    'value': MdcButtonProps['value'];
+    'mdcClass': MdcButtonProps["class"];
+    'name': MdcButtonProps["name"];
+    /**
+    * Enables outlined variant.
+    */
+    'outlined': MdcButtonProps["outlined"];
+    /**
+    * Enables raised variant.
+    */
+    'raised': MdcButtonProps["raised"];
+    /**
+    * Icon to render on the right side of the element
+    */
+    'trailingIcon': MdcButtonProps["trailingIcon"];
+    'type': MdcButtonProps["type"];
+    /**
+    * Enables unelevated variant.
+    */
+    'unelevated': MdcButtonProps["unelevated"];
+    'value': MdcButtonProps["value"];
+  }
+  interface MdcCard {
+    'mdcClass': MdcCardProps["class"];
+    'outlined': MdcCardProps["outlined"];
+  }
+  interface MdcCardMedia {
+    'imageUrl': MdcCardMediaProps["imageUrl"];
+    'mdcClass': MdcCardMediaProps["class"];
+    'size': MdcCardMediaProps["size"];
+  }
+  interface MdcCardPrimaryContent {
+    'layout': () => Promise<void>;
   }
   interface MdcCheckbox {
     'checked': MdcCheckboxProps['checked'];
@@ -165,6 +209,24 @@ declare global {
     new (): HTMLMdcButtonElement;
   };
 
+  interface HTMLMdcCardElement extends Components.MdcCard, HTMLStencilElement {}
+  var HTMLMdcCardElement: {
+    prototype: HTMLMdcCardElement;
+    new (): HTMLMdcCardElement;
+  };
+
+  interface HTMLMdcCardMediaElement extends Components.MdcCardMedia, HTMLStencilElement {}
+  var HTMLMdcCardMediaElement: {
+    prototype: HTMLMdcCardMediaElement;
+    new (): HTMLMdcCardMediaElement;
+  };
+
+  interface HTMLMdcCardPrimaryContentElement extends Components.MdcCardPrimaryContent, HTMLStencilElement {}
+  var HTMLMdcCardPrimaryContentElement: {
+    prototype: HTMLMdcCardPrimaryContentElement;
+    new (): HTMLMdcCardPrimaryContentElement;
+  };
+
   interface HTMLMdcCheckboxElement extends Components.MdcCheckbox, HTMLStencilElement {}
   var HTMLMdcCheckboxElement: {
     prototype: HTMLMdcCheckboxElement;
@@ -232,6 +294,9 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     'mdc-button': HTMLMdcButtonElement;
+    'mdc-card': HTMLMdcCardElement;
+    'mdc-card-media': HTMLMdcCardMediaElement;
+    'mdc-card-primary-content': HTMLMdcCardPrimaryContentElement;
     'mdc-checkbox': HTMLMdcCheckboxElement;
     'mdc-chip-set': HTMLMdcChipSetElement;
     'mdc-dialog': HTMLMdcDialogElement;
@@ -248,15 +313,53 @@ declare global {
 
 declare namespace LocalJSX {
   interface MdcButton {
-    'dense'?: MdcButtonProps['dense'];
-    'disabled'?: MdcButtonProps['disabled'];
-    'name'?: MdcButtonProps['name'];
-    'outlined'?: MdcButtonProps['outlined'];
-    'raised'?: MdcButtonProps['raised'];
-    'type'?: MdcButtonProps['type'];
-    'unelevated'?: MdcButtonProps['unelevated'];
-    'value'?: MdcButtonProps['value'];
+    /**
+    * Enables dense variant.
+    */
+    'dense'?: MdcButtonProps["dense"];
+    /**
+    * Disables button if true.
+    */
+    'disabled'?: MdcButtonProps["disabled"];
+    /**
+    * Sets a hyperlink & uses anchor tag instead of a button.
+    */
+    'href'?: MdcButtonProps["href"];
+    /**
+    * Icon to render within root element.
+    */
+    'icon'?: MdcButtonProps["icon"];
+    'mdcClass'?: MdcButtonProps["class"];
+    'name'?: MdcButtonProps["name"];
+    /**
+    * Enables outlined variant.
+    */
+    'outlined'?: MdcButtonProps["outlined"];
+    /**
+    * Enables raised variant.
+    */
+    'raised'?: MdcButtonProps["raised"];
+    /**
+    * Icon to render on the right side of the element
+    */
+    'trailingIcon'?: MdcButtonProps["trailingIcon"];
+    'type'?: MdcButtonProps["type"];
+    /**
+    * Enables unelevated variant.
+    */
+    'unelevated'?: MdcButtonProps["unelevated"];
+    'value'?: MdcButtonProps["value"];
   }
+  interface MdcCard {
+    'mdcClass'?: MdcCardProps["class"];
+    'outlined'?: MdcCardProps["outlined"];
+  }
+  interface MdcCardMedia {
+    'imageUrl'?: MdcCardMediaProps["imageUrl"];
+    'mdcClass'?: MdcCardMediaProps["class"];
+    'size'?: MdcCardMediaProps["size"];
+  }
+  interface MdcCardPrimaryContent {}
   interface MdcCheckbox {
     'checked'?: MdcCheckboxProps['checked'];
     'disabled'?: MdcCheckboxProps['disabled'];
@@ -319,6 +422,9 @@ declare namespace LocalJSX {
 
   interface IntrinsicElements {
     'mdc-button': MdcButton;
+    'mdc-card': MdcCard;
+    'mdc-card-media': MdcCardMedia;
+    'mdc-card-primary-content': MdcCardPrimaryContent;
     'mdc-checkbox': MdcCheckbox;
     'mdc-chip-set': MdcChipSet;
     'mdc-dialog': MdcDialog;
@@ -340,6 +446,9 @@ declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
       'mdc-button': LocalJSX.MdcButton & JSXBase.HTMLAttributes<HTMLMdcButtonElement>;
+      'mdc-card': LocalJSX.MdcCard & JSXBase.HTMLAttributes<HTMLMdcCardElement>;
+      'mdc-card-media': LocalJSX.MdcCardMedia & JSXBase.HTMLAttributes<HTMLMdcCardMediaElement>;
+      'mdc-card-primary-content': LocalJSX.MdcCardPrimaryContent & JSXBase.HTMLAttributes<HTMLMdcCardPrimaryContentElement>;
       'mdc-checkbox': LocalJSX.MdcCheckbox & JSXBase.HTMLAttributes<HTMLMdcCheckboxElement>;
       'mdc-chip-set': LocalJSX.MdcChipSet & JSXBase.HTMLAttributes<HTMLMdcChipSetElement>;
       'mdc-dialog': LocalJSX.MdcDialog & JSXBase.HTMLAttributes<HTMLMdcDialogElement>;
