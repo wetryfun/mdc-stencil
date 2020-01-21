@@ -86,7 +86,7 @@ export const MdcButton: FunctionalComponent<MdcButtonProps> = (
   return (
     <button {...mdcButton({ ...props })}>
       <div class={CSS_CLASSES.RIPPLE}></div>
-      {!icon && !trailingIcon && <MdcButtonIcon icon={icon} />}
+      {icon && !trailingIcon && <MdcButtonIcon icon={icon} />}
       {label && <span class={CSS_CLASSES.LABEL}>{label}</span>}
       {icon && trailingIcon && <MdcButtonIcon icon={icon} />}
       {children}
