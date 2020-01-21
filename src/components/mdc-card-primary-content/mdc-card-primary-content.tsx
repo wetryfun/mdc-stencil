@@ -11,7 +11,7 @@ import { mdcCardPrimaryContent } from ".";
 
 @Component({
   tag: "mdc-card-primary-content",
-  styleUrl: "mdc-card.scss",
+  styleUrl: "../mdc-card/mdc-card.scss",
   shadow: false
 })
 export class MdcCardPrimaryContent implements ComponentInterface {
@@ -19,7 +19,10 @@ export class MdcCardPrimaryContent implements ComponentInterface {
 
   @Method()
   async layout() {
-    this.mdcRipple.layout();
+    const { mdcRipple } = this;
+    if (mdcRipple) {
+      mdcRipple.layout();
+    }
   }
 
   componentDidLoad() {
@@ -27,7 +30,10 @@ export class MdcCardPrimaryContent implements ComponentInterface {
   }
 
   componentDidUnload() {
-    this.mdcRipple.destroy();
+    const { mdcRipple } = this;
+    if (mdcRipple) {
+      mdcRipple.destroy();
+    }
   }
 
   componentDidRender() {

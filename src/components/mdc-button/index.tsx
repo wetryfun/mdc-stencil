@@ -1,47 +1,50 @@
 import { FunctionalComponent, h } from "@stencil/core";
 import { JSXBase } from "@stencil/core/internal";
 import { classNames } from "../utils";
-
-export const CSS_CLASSES = {
-  ROOT: "mdc-button",
-  ICON: "mdc-button__icon",
-  LABEL: "mdc-button__label",
-  DENSE: "mdc-button--dense",
-  RAISED: "mdc-button--raised",
-  OUTLINED: "mdc-button--outlined",
-  UNELEVATED: "mdc-button--unelevated"
-};
+import CSS_CLASSES from "./constant";
 
 export interface MdcButtonProps
-  extends JSXBase.InputHTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
+  extends JSXBase.InputHTMLAttributes<HTMLButtonElement> {
   /**
-   * Enables raised variant.
+   * Icon to display, and aria-label value when label is not defined..
+   */
+  icon?: string;
+  /**
+   * Label to display for the button, and aria-label.
+   */
+  label?: string;
+  /**
+   * Creates a contained button that is elevated above the surface.
    */
   raised?: boolean;
   /**
-   * Enables unelevated variant.
+   * Creates a contained button that is flush with the surface.
    */
   unelevated?: boolean;
   /**
-   * Enables outlined variant.
+   * Creates an outlined button that is flush with the surface.
    */
   outlined?: boolean;
   /**
-   * Enables dense variant.
+   * Makes the button text and container slightly smaller.
    */
   dense?: boolean;
   /**
-   * Icon to render within root element.
+   * Disabled buttons cannot be interacted with and have no visual interaction effect.
    */
-  icon?: HTMLOrSVGElement;
+  disabled?: boolean;
   /**
-   * Icon to render on the right side of the element
+   * When true, icon will be displayed after label.
    */
-  trailingIcon?: HTMLOrSVGElement;
+  trailingIcon?: boolean;
+}
+
+export interface MdcButtonIconProps
+  extends JSXBase.InputHTMLAttributes<HTMLSpanElement> {
   /**
-   * Sets a hyperlink & uses anchor tag instead of a button.
+   * Icon to display, and aria-label value when label is not defined..
    */
-  href?: HTMLAnchorElement["href"];
+  icon?: string;
 }
 
 export const mdcButton = ({
@@ -52,7 +55,6 @@ export const mdcButton = ({
   dense,
   icon,
   trailingIcon,
-  href,
   ...rest
 }: MdcButtonProps) => ({
   class: {
@@ -63,7 +65,6 @@ export const mdcButton = ({
     [CSS_CLASSES.DENSE]: dense,
     ...classNames(className)
   },
-  href,
   ...rest
 });
 
@@ -76,16 +77,25 @@ export const MdcButton: FunctionalComponent<MdcButtonProps> = (
   props,
   children
 ) => {
-  const { icon, trailingIcon, href } = {
+  const { icon, trailingIcon, label } = {
     ...props
   };
-  const Tag = href ? "a" : "button";
 
   return (
-    <Tag {...mdcButton({ ...props })}>
-      {!trailingIcon ? icon : null}
+    <button {...mdcButton({ ...props })} aria-label={label || icon}>
+      <div class="mdc-button__ripple"></div>
+      {!icon && !trailingIcon ? <MdcButtonIcon icon={icon} /> : null}
+      {label && <span class={`${CSS_CLASSES.LABEL}`}>{label}</span>}
+      {icon && trailingIcon ? <MdcButtonIcon icon={icon} /> : null}
       {children}
-      {trailingIcon ? trailingIcon : null}
-    </Tag>
+    </button>
   );
 };
+
+export const MdcButtonIcon: FunctionalComponent<MdcButtonIconProps> = ({
+  icon
+}) => (
+  <span class={{ "material-icons": true, [CSS_CLASSES.ICON]: true }}>
+    {icon}
+  </span>
+);

@@ -1,6 +1,15 @@
 import { MDCRipple } from "@material/ripple";
-import { Component, ComponentInterface, h, Method, Prop } from "@stencil/core";
-import { MdcButton as Button, MdcButtonProps } from ".";
+import {
+  Component,
+  ComponentInterface,
+  getElement,
+  h,
+  Host,
+  Method,
+  Prop
+} from "@stencil/core";
+import { mdcButton, MdcButtonIcon, MdcButtonProps } from ".";
+import { CSS_CLASSES } from "./constant";
 
 @Component({
   tag: "mdc-button",
@@ -9,56 +18,61 @@ import { MdcButton as Button, MdcButtonProps } from ".";
 })
 export class MdcButton implements ComponentInterface {
   /**
-   * Enables raised variant.
-   */
-  @Prop() raised: MdcButtonProps["raised"] = false;
-  /**
-   * Enables unelevated variant.
-   */
-  @Prop() unelevated: MdcButtonProps["unelevated"] = false;
-  /**
-   * Enables outlined variant.
-   */
-  @Prop() outlined: MdcButtonProps["outlined"] = false;
-  /**
-   * Enables dense variant.
-   */
-  @Prop() dense: MdcButtonProps["dense"] = false;
-  /**
-   * Icon to render within root element.
+   * Icon to display, and aria-label value when label is not defined.
    */
   @Prop() icon: MdcButtonProps["icon"];
   /**
-   * Icon to render on the right side of the element
+   * Label to display for the button, and aria-label.
+   */
+  @Prop() label: MdcButtonProps["label"];
+  /**
+   * Creates a contained button that is elevated above the surface.
+   */
+  @Prop() raised: MdcButtonProps["raised"] = false;
+  /**
+   * Creates a contained button that is flush with the surface.
+   */
+  @Prop() unelevated: MdcButtonProps["unelevated"] = false;
+  /**
+   * Creates an outlined button that is flush with the surface.
+   */
+  @Prop() outlined: MdcButtonProps["outlined"] = false;
+  /**
+   * Makes the button text and container slightly smaller.
+   */
+  @Prop() dense: MdcButtonProps["dense"] = false;
+  /**
+   * Disabled buttons cannot be interacted with and have no visual interaction effect.
+   */
+  @Prop({ reflectToAttr: true }) disabled: MdcButtonProps["disabled"] = false;
+  /**
+   * When true, icon will be displayed after label.
    */
   @Prop() trailingIcon: MdcButtonProps["trailingIcon"];
-  /**
-   * Disables button if true.
-   */
-  @Prop() disabled: MdcButtonProps["disabled"] = false;
-  /**
-   * Sets a hyperlink & uses anchor tag instead of a button.
-   */
-  @Prop() href: MdcButtonProps["href"];
-  @Prop() name: MdcButtonProps["name"];
-  @Prop() type: MdcButtonProps["type"];
-  @Prop() value: MdcButtonProps["value"];
-  @Prop() mdcClass: MdcButtonProps["class"];
 
-  private button: HTMLButtonElement | HTMLAnchorElement;
   private mdcRipple: MDCRipple;
 
   @Method()
   async layout() {
-    this.mdcRipple.layout();
+    const { mdcRipple } = this;
+    if (mdcRipple) {
+      mdcRipple.layout();
+    }
   }
 
   componentDidLoad() {
-    this.mdcRipple = new MDCRipple(this.button);
+    const { disabled } = this;
+    const mdcRipple = new MDCRipple(getElement(this));
+    mdcRipple.unbounded = true;
+    mdcRipple.disabled = disabled;
+    this.mdcRipple = mdcRipple;
   }
 
   componentDidUnload() {
-    this.mdcRipple.destroy();
+    const { mdcRipple } = this;
+    if (mdcRipple) {
+      mdcRipple.destroy();
+    }
   }
 
   componentDidRender() {
@@ -69,40 +83,15 @@ export class MdcButton implements ComponentInterface {
   }
 
   render() {
-    const {
-      raised,
-      unelevated,
-      outlined,
-      dense,
-      icon,
-      trailingIcon,
-      href,
-      disabled,
-      mdcClass,
-      name,
-      type,
-      value
-    } = this;
+    const { label, icon, trailingIcon } = this;
     return (
-      <Button
-        ref={el => (this.button = el)}
-        {...{
-          raised,
-          unelevated,
-          outlined,
-          dense,
-          icon,
-          trailingIcon,
-          href,
-          disabled,
-          class: mdcClass,
-          name,
-          type,
-          value
-        }}
-      >
+      <Host {...mdcButton(this)} aria-label={label || icon}>
+        <div class="mdc-button__ripple"></div>
+        {icon && !trailingIcon ? <MdcButtonIcon icon={icon} /> : null}
+        {label && <span class={`${CSS_CLASSES.LABEL}`}>{label}</span>}
+        {icon && trailingIcon ? <MdcButtonIcon icon={icon} /> : null}
         <slot />
-      </Button>
+      </Host>
     );
   }
 }

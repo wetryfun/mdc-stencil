@@ -19,6 +19,9 @@ export const config: Config = {
     },
     {
       type: 'www',
+      copy: [
+        {src: 'components/**/*.html', keepDirStructure: false}
+      ],
       serviceWorker: null // disable service workers
     }
   ]

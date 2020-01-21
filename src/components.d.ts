@@ -11,9 +11,11 @@ import {
   MdcButtonProps,
 } from './components/mdc-button';
 import {
-  MdcCardMediaProps,
   MdcCardProps,
 } from './components/mdc-card';
+import {
+  MdcCardMediaProps,
+} from './components/mdc-card-media';
 import {
   MdcCheckboxProps,
 } from './components/mdc-checkbox';
@@ -42,50 +44,47 @@ import {
 export namespace Components {
   interface MdcButton {
     /**
-    * Enables dense variant.
+    * Makes the button text and container slightly smaller.
     */
     'dense': MdcButtonProps["dense"];
     /**
-    * Disables button if true.
+    * Disabled buttons cannot be interacted with and have no visual interaction effect.
     */
     'disabled': MdcButtonProps["disabled"];
     /**
-    * Sets a hyperlink & uses anchor tag instead of a button.
-    */
-    'href': MdcButtonProps["href"];
-    /**
-    * Icon to render within root element.
+    * Icon to display, and aria-label value when label is not defined.
     */
     'icon': MdcButtonProps["icon"];
-    'layout': () => Promise<void>;
-    'mdcClass': MdcButtonProps["class"];
-    'name': MdcButtonProps["name"];
     /**
-    * Enables outlined variant.
+    * Label to display for the button, and aria-label.
+    */
+    'label': MdcButtonProps["label"];
+    'layout': () => Promise<void>;
+    /**
+    * Creates an outlined button that is flush with the surface.
     */
     'outlined': MdcButtonProps["outlined"];
     /**
-    * Enables raised variant.
+    * Creates a contained button that is elevated above the surface.
     */
     'raised': MdcButtonProps["raised"];
     /**
-    * Icon to render on the right side of the element
+    * When true, icon will be displayed after label.
     */
     'trailingIcon': MdcButtonProps["trailingIcon"];
-    'type': MdcButtonProps["type"];
     /**
-    * Enables unelevated variant.
+    * Creates a contained button that is flush with the surface.
     */
     'unelevated': MdcButtonProps["unelevated"];
-    'value': MdcButtonProps["value"];
   }
   interface MdcCard {
-    'mdcClass': MdcCardProps["class"];
     'outlined': MdcCardProps["outlined"];
   }
+  interface MdcCardActionButtons {}
+  interface MdcCardActionIcons {}
+  interface MdcCardActions {}
   interface MdcCardMedia {
     'imageUrl': MdcCardMediaProps["imageUrl"];
-    'mdcClass': MdcCardMediaProps["class"];
     'size': MdcCardMediaProps["size"];
   }
   interface MdcCardPrimaryContent {
@@ -215,6 +214,24 @@ declare global {
     new (): HTMLMdcCardElement;
   };
 
+  interface HTMLMdcCardActionButtonsElement extends Components.MdcCardActionButtons, HTMLStencilElement {}
+  var HTMLMdcCardActionButtonsElement: {
+    prototype: HTMLMdcCardActionButtonsElement;
+    new (): HTMLMdcCardActionButtonsElement;
+  };
+
+  interface HTMLMdcCardActionIconsElement extends Components.MdcCardActionIcons, HTMLStencilElement {}
+  var HTMLMdcCardActionIconsElement: {
+    prototype: HTMLMdcCardActionIconsElement;
+    new (): HTMLMdcCardActionIconsElement;
+  };
+
+  interface HTMLMdcCardActionsElement extends Components.MdcCardActions, HTMLStencilElement {}
+  var HTMLMdcCardActionsElement: {
+    prototype: HTMLMdcCardActionsElement;
+    new (): HTMLMdcCardActionsElement;
+  };
+
   interface HTMLMdcCardMediaElement extends Components.MdcCardMedia, HTMLStencilElement {}
   var HTMLMdcCardMediaElement: {
     prototype: HTMLMdcCardMediaElement;
@@ -295,6 +312,9 @@ declare global {
   interface HTMLElementTagNameMap {
     'mdc-button': HTMLMdcButtonElement;
     'mdc-card': HTMLMdcCardElement;
+    'mdc-card-action-buttons': HTMLMdcCardActionButtonsElement;
+    'mdc-card-action-icons': HTMLMdcCardActionIconsElement;
+    'mdc-card-actions': HTMLMdcCardActionsElement;
     'mdc-card-media': HTMLMdcCardMediaElement;
     'mdc-card-primary-content': HTMLMdcCardPrimaryContentElement;
     'mdc-checkbox': HTMLMdcCheckboxElement;
@@ -314,49 +334,46 @@ declare global {
 declare namespace LocalJSX {
   interface MdcButton {
     /**
-    * Enables dense variant.
+    * Makes the button text and container slightly smaller.
     */
     'dense'?: MdcButtonProps["dense"];
     /**
-    * Disables button if true.
+    * Disabled buttons cannot be interacted with and have no visual interaction effect.
     */
     'disabled'?: MdcButtonProps["disabled"];
     /**
-    * Sets a hyperlink & uses anchor tag instead of a button.
-    */
-    'href'?: MdcButtonProps["href"];
-    /**
-    * Icon to render within root element.
+    * Icon to display, and aria-label value when label is not defined.
     */
     'icon'?: MdcButtonProps["icon"];
-    'mdcClass'?: MdcButtonProps["class"];
-    'name'?: MdcButtonProps["name"];
     /**
-    * Enables outlined variant.
+    * Label to display for the button, and aria-label.
+    */
+    'label'?: MdcButtonProps["label"];
+    /**
+    * Creates an outlined button that is flush with the surface.
     */
     'outlined'?: MdcButtonProps["outlined"];
     /**
-    * Enables raised variant.
+    * Creates a contained button that is elevated above the surface.
     */
     'raised'?: MdcButtonProps["raised"];
     /**
-    * Icon to render on the right side of the element
+    * When true, icon will be displayed after label.
     */
     'trailingIcon'?: MdcButtonProps["trailingIcon"];
-    'type'?: MdcButtonProps["type"];
     /**
-    * Enables unelevated variant.
+    * Creates a contained button that is flush with the surface.
     */
     'unelevated'?: MdcButtonProps["unelevated"];
-    'value'?: MdcButtonProps["value"];
   }
   interface MdcCard {
-    'mdcClass'?: MdcCardProps["class"];
     'outlined'?: MdcCardProps["outlined"];
   }
+  interface MdcCardActionButtons {}
+  interface MdcCardActionIcons {}
+  interface MdcCardActions {}
   interface MdcCardMedia {
     'imageUrl'?: MdcCardMediaProps["imageUrl"];
-    'mdcClass'?: MdcCardMediaProps["class"];
     'size'?: MdcCardMediaProps["size"];
   }
   interface MdcCardPrimaryContent {}
@@ -423,6 +440,9 @@ declare namespace LocalJSX {
   interface IntrinsicElements {
     'mdc-button': MdcButton;
     'mdc-card': MdcCard;
+    'mdc-card-action-buttons': MdcCardActionButtons;
+    'mdc-card-action-icons': MdcCardActionIcons;
+    'mdc-card-actions': MdcCardActions;
     'mdc-card-media': MdcCardMedia;
     'mdc-card-primary-content': MdcCardPrimaryContent;
     'mdc-checkbox': MdcCheckbox;
@@ -447,6 +467,9 @@ declare module "@stencil/core" {
     interface IntrinsicElements {
       'mdc-button': LocalJSX.MdcButton & JSXBase.HTMLAttributes<HTMLMdcButtonElement>;
       'mdc-card': LocalJSX.MdcCard & JSXBase.HTMLAttributes<HTMLMdcCardElement>;
+      'mdc-card-action-buttons': LocalJSX.MdcCardActionButtons & JSXBase.HTMLAttributes<HTMLMdcCardActionButtonsElement>;
+      'mdc-card-action-icons': LocalJSX.MdcCardActionIcons & JSXBase.HTMLAttributes<HTMLMdcCardActionIconsElement>;
+      'mdc-card-actions': LocalJSX.MdcCardActions & JSXBase.HTMLAttributes<HTMLMdcCardActionsElement>;
       'mdc-card-media': LocalJSX.MdcCardMedia & JSXBase.HTMLAttributes<HTMLMdcCardMediaElement>;
       'mdc-card-primary-content': LocalJSX.MdcCardPrimaryContent & JSXBase.HTMLAttributes<HTMLMdcCardPrimaryContentElement>;
       'mdc-checkbox': LocalJSX.MdcCheckbox & JSXBase.HTMLAttributes<HTMLMdcCheckboxElement>;

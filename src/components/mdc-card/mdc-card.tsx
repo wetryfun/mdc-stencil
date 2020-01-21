@@ -8,7 +8,6 @@ import { mdcCard, MdcCardProps } from ".";
 })
 export class MdcCard implements ComponentInterface {
   @Prop() outlined: MdcCardProps["outlined"];
-  @Prop() mdcClass: MdcCardProps["class"];
 
   render() {
     return (
