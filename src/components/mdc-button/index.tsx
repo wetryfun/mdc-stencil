@@ -42,9 +42,9 @@ export interface MdcButtonProps
 export interface MdcButtonIconProps
   extends JSXBase.InputHTMLAttributes<HTMLSpanElement> {
   /**
-   * Icon to display, and aria-label value when label is not defined..
+   * Icon to display
    */
-  icon?: string;
+  icon: string;
 }
 
 export const mdcButton = ({
@@ -85,9 +85,9 @@ export const MdcButton: FunctionalComponent<MdcButtonProps> = (
 
   return (
     <button {...mdcButton({ ...props })}>
-      <div class="mdc-button__ripple"></div>
+      <div class={CSS_CLASSES.RIPPLE}></div>
       {!icon && !trailingIcon && <MdcButtonIcon icon={icon} />}
-      {label && <span class={`${CSS_CLASSES.LABEL}`}>{label}</span>}
+      {label && <span class={CSS_CLASSES.LABEL}>{label}</span>}
       {icon && trailingIcon && <MdcButtonIcon icon={icon} />}
       {children}
     </button>
