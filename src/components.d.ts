@@ -59,6 +59,9 @@ export namespace Components {
     * Label to display for the button, and aria-label.
     */
     'label': MdcButtonProps["label"];
+    /**
+    * Delegates to `ripple.layout()`
+    */
     'layout': () => Promise<void>;
     /**
     * Creates an outlined button that is flush with the surface.
