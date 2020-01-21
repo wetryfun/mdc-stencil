@@ -9,32 +9,31 @@
     <title>mdc-card</title>
     <script type="module" src="./build/mdc-stencil.esm.js"></script>
     <script nomodule src="./build/mdc-stencil.js"></script>
+    <style>
+      mdc-card {
+        max-height: calc(100vh - 16px);
+      }
+    </style>
   </head>
   <body>
-    <section style="width: 20vw;">
-      <mdc-card>
-        <mdc-card-primary-content>
-          <h1>Header</h1>
-          <mdc-card-media
-            size="square"
-            image-url="https://avatars3.githubusercontent.com/u/59491353?s=200&v=4"
-            >media content</mdc-card-media
+    <mdc-card>
+      <mdc-card-primary-content>
+        <mdc-card-media
+          size="square"
+          image-url="https://avatars3.githubusercontent.com/u/59491353?s=200&v=4"
+          ><h1>Title</h1></mdc-card-media
+        >
+      </mdc-card-primary-content>
+      <mdc-card-actions>
+        <mdc-card-action-buttons>
+          <mdc-button class="mdc-card__action mdc-card__action--button"
+            >Action 1</mdc-button
           >
-        </mdc-card-primary-content>
-        <mdc-card-actions>
-          <mdc-card-action-buttons>
-            <mdc-button class="mdc-card__action mdc-card__action--button"
-              >test</mdc-button
-            >
-            <mdc-button class="mdc-card__action mdc-card__action--button"
-              >test</mdc-button
-            >
-            <mdc-button class="mdc-card__action mdc-card__action--button"
-              >test</mdc-button
-            >
-          </mdc-card-action-buttons>
-        </mdc-card-actions>
-      </mdc-card>
-    </section>
+          <mdc-button class="mdc-card__action mdc-card__action--button"
+            >Action 2</mdc-button
+          >
+        </mdc-card-action-buttons>
+      </mdc-card-actions>
+    </mdc-card>
   </body>
 </html>

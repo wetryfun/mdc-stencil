@@ -866,7 +866,7 @@ var CustomStyle = /** @class */ (function () {
 
   var resourcesUrl = scriptElm ? scriptElm.getAttribute('data-resources-url') || scriptElm.src : '';
   var start = function() {
-    var url = new URL('./p-5447a37e.system.js', resourcesUrl);
+    var url = new URL('./p-05d3f4a8.system.js', resourcesUrl);
     System.import(url.href);
   };
 
