@@ -4,11 +4,13 @@ import {
   ComponentInterface,
   getElement,
   h,
-  Host,
-  Method
+  Host
 } from "@stencil/core";
 import { mdcCardPrimaryContent } from ".";
 
+/**
+ * @slot default - Primary content
+ */
 @Component({
   tag: "mdc-card-primary-content",
   shadow: false
@@ -16,31 +18,14 @@ import { mdcCardPrimaryContent } from ".";
 export class MdcCardPrimaryContent implements ComponentInterface {
   private mdcRipple: MDCRipple;
 
-  @Method()
-  async layout() {
-    const { mdcRipple } = this;
-    if (mdcRipple) {
-      mdcRipple.layout();
-    }
-  }
-
-  componentDidLoad() {
+  connectedCallback() {
     this.mdcRipple = new MDCRipple(getElement(this));
   }
 
-  componentDidUnload() {
-    const { mdcRipple } = this;
-    if (mdcRipple) {
-      mdcRipple.destroy();
-    }
+  disconnectedCallback() {
+    this.mdcRipple.destroy();
   }
 
-  componentDidRender() {
-    const { mdcRipple } = this;
-    if (mdcRipple) {
-      mdcRipple.layout();
-    }
-  }
   render() {
     return (
       <Host {...mdcCardPrimaryContent(this)}>

@@ -5,7 +5,6 @@ import {
   getElement,
   h,
   Host,
-  Method,
   Prop
 } from "@stencil/core";
 import { mdcButton, MdcButtonIcon, MdcButtonProps } from ".";
@@ -52,18 +51,7 @@ export class MdcButton implements ComponentInterface {
 
   private mdcRipple: MDCRipple;
 
-  /**
-   * Delegates to `ripple.layout()`
-   */
-  @Method()
-  async layout() {
-    const { mdcRipple } = this;
-    if (mdcRipple) {
-      mdcRipple.layout();
-    }
-  }
-
-  componentDidLoad() {
+  connectedCallback() {
     const { disabled } = this;
     const mdcRipple = new MDCRipple(getElement(this));
     mdcRipple.unbounded = true;
@@ -71,18 +59,8 @@ export class MdcButton implements ComponentInterface {
     this.mdcRipple = mdcRipple;
   }
 
-  componentDidUnload() {
-    const { mdcRipple } = this;
-    if (mdcRipple) {
-      mdcRipple.destroy();
-    }
-  }
-
-  componentDidRender() {
-    const { mdcRipple } = this;
-    if (mdcRipple) {
-      mdcRipple.layout();
-    }
+  disconnectedCallback() {
+    this.mdcRipple.destroy();
   }
 
   render() {

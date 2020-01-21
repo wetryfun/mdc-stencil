@@ -60,10 +60,6 @@ export namespace Components {
     */
     'label': MdcButtonProps["label"];
     /**
-    * Delegates to `ripple.layout()`
-    */
-    'layout': () => Promise<void>;
-    /**
     * Creates an outlined button that is flush with the surface.
     */
     'outlined': MdcButtonProps["outlined"];
@@ -90,9 +86,7 @@ export namespace Components {
     'imageUrl': MdcCardMediaProps["imageUrl"];
     'size': MdcCardMediaProps["size"];
   }
-  interface MdcCardPrimaryContent {
-    'layout': () => Promise<void>;
-  }
+  interface MdcCardPrimaryContent {}
   interface MdcCheckbox {
     'checked': MdcCheckboxProps['checked'];
     'disabled': MdcCheckboxProps['disabled'];

@@ -20,19 +20,6 @@ A Stencil version of an [MDC Button](https://github.com/material-components/mate
 | `unelevated`   | `unelevated`    | Creates a contained button that is flush with the surface.                        | `boolean` | `false` |
 
 
-## Methods
-
-### `layout() => Promise<void>`
-
-Delegates to `ripple.layout()`
-
-#### Returns
-
-Type: `Promise<void>`
-
-
-
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
