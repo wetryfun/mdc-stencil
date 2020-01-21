@@ -11,7 +11,6 @@ import { mdcCardPrimaryContent } from ".";
 
 @Component({
   tag: "mdc-card-primary-content",
-  styleUrl: "../mdc-card/mdc-card.scss",
   shadow: false
 })
 export class MdcCardPrimaryContent implements ComponentInterface {

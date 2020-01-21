@@ -3,7 +3,6 @@ import { mdcCardActionButtons } from ".";
 
 @Component({
   tag: "mdc-card-action-buttons",
-  styleUrl: "../mdc-card/mdc-card.scss",
   shadow: false
 })
 export class MdcCardActionButtons implements ComponentInterface {
