@@ -1,0 +1,1 @@
+const t=t=>"string"==typeof t?{[t]:!0}:t,s=()=>Math.random().toString(36).substr(2,9);export{t as c,s as u};
