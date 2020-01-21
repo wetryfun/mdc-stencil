@@ -20,11 +20,11 @@ export class MdcButton implements ComponentInterface {
   /**
    * Icon to display, and aria-label value when label is not defined.
    */
-  @Prop() icon: MdcButtonProps["icon"] = '';
+  @Prop() icon: MdcButtonProps["icon"] = "";
   /**
    * Label to display for the button, and aria-label.
    */
-  @Prop() label: MdcButtonProps["label"] = '';
+  @Prop() label: MdcButtonProps["label"] = "";
   /**
    * Creates a contained button that is elevated above the surface.
    */
@@ -88,7 +88,7 @@ export class MdcButton implements ComponentInterface {
   render() {
     const { label, icon, trailingIcon } = this;
     return (
-      <Host {...mdcButton(this)} aria-label={label || icon}>
+      <Host {...mdcButton(this)}>
         <div class="mdc-button__ripple"></div>
         {icon && !trailingIcon ? <MdcButtonIcon icon={icon} /> : null}
         {label && <span class={`${CSS_CLASSES.LABEL}`}>{label}</span>}

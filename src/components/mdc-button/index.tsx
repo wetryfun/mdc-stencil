@@ -53,6 +53,7 @@ export const mdcButton = ({
   unelevated,
   outlined,
   dense,
+  label,
   icon,
   trailingIcon,
   ...rest
@@ -65,6 +66,7 @@ export const mdcButton = ({
     [CSS_CLASSES.DENSE]: dense,
     ...classNames(className)
   },
+  "aria-label": label || icon,
   ...rest
 });
 
@@ -82,7 +84,7 @@ export const MdcButton: FunctionalComponent<MdcButtonProps> = (
   };
 
   return (
-    <button {...mdcButton({ ...props })} aria-label={label || icon}>
+    <button {...mdcButton({ ...props })}>
       <div class="mdc-button__ripple"></div>
       {!icon && !trailingIcon ? <MdcButtonIcon icon={icon} /> : null}
       {label && <span class={`${CSS_CLASSES.LABEL}`}>{label}</span>}
