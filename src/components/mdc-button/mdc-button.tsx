@@ -90,9 +90,9 @@ export class MdcButton implements ComponentInterface {
     return (
       <Host {...mdcButton(this)}>
         <div class="mdc-button__ripple"></div>
-        {icon && !trailingIcon ? <MdcButtonIcon icon={icon} /> : null}
+        {icon && !trailingIcon && <MdcButtonIcon icon={icon} />}
         {label && <span class={`${CSS_CLASSES.LABEL}`}>{label}</span>}
-        {icon && trailingIcon ? <MdcButtonIcon icon={icon} /> : null}
+        {icon && trailingIcon && <MdcButtonIcon icon={icon} />}
         <slot />
       </Host>
     );
