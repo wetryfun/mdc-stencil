@@ -10,7 +10,7 @@
 | Property   | Attribute   | Description | Type                 | Default     |
 | ---------- | ----------- | ----------- | -------------------- | ----------- |
 | `imageUrl` | `image-url` |             | `string`             | `undefined` |
-| `size`     | `size`      |             | `"square" \| "wide"` | `undefined` |
+| `size`     | `size`      |             | `"square" or "wide"` | `undefined` |
 
 
 ----------------------------------------------

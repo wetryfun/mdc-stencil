@@ -15,7 +15,7 @@
 | `on`       | `on`       |             | `boolean`                      | `undefined` |
 | `toggle`   | `toggle`   |             | `boolean`                      | `false`     |
 | `type`     | `type`     |             | `string`                       | `undefined` |
-| `value`    | `value`    |             | `number \| string \| string[]` | `undefined` |
+| `value`    | `value`    |             | `number or string or string[]` | `undefined` |
 
 
 ## Methods

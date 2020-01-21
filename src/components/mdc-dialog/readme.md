@@ -9,7 +9,7 @@
 
 | Property               | Attribute | Description | Type                           | Default     |
 | ---------------------- | --------- | ----------- | ------------------------------ | ----------- |
-| `surface` _(required)_ | --        |             | `HTMLElement \| HTMLElement[]` | `undefined` |
+| `surface` _(required)_ | --        |             | `HTMLElement or HTMLElement[]` | `undefined` |
 
 
 ## Methods

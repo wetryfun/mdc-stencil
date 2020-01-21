@@ -10,7 +10,7 @@
 | Property   | Attribute  | Description | Type                    | Default     |
 | ---------- | ---------- | ----------- | ----------------------- | ----------- |
 | `disabled` | `disabled` |             | `boolean`               | `undefined` |
-| `label`    | `label`    |             | `HTMLElement \| string` | `undefined` |
+| `label`    | `label`    |             | `HTMLElement or string` | `undefined` |
 | `name`     | `name`     |             | `string`                | `undefined` |
 | `outlined` | `outlined` |             | `boolean`               | `undefined` |
 | `required` | `required` |             | `boolean`               | `undefined` |

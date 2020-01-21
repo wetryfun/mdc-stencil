@@ -13,7 +13,7 @@
 | `disabled`      | `disabled`      |             | `boolean`                      | `undefined` |
 | `indeterminate` | `indeterminate` |             | `boolean`                      | `undefined` |
 | `name`          | `name`          |             | `string`                       | `undefined` |
-| `value`         | `value`         |             | `number \| string \| string[]` | `undefined` |
+| `value`         | `value`         |             | `number or string or string[]` | `undefined` |
 
 
 ## Methods
