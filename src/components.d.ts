@@ -80,6 +80,9 @@ export namespace Components {
     'unelevated': MdcButtonProps["unelevated"];
   }
   interface MdcCard {
+    /**
+    * Enables an outline on the card.
+    */
     'outlined': MdcCardProps["outlined"];
   }
   interface MdcCardActionButtons {}
@@ -411,6 +414,9 @@ declare namespace LocalJSX {
     'unelevated'?: MdcButtonProps["unelevated"];
   }
   interface MdcCard {
+    /**
+    * Enables an outline on the card.
+    */
     'outlined'?: MdcCardProps["outlined"];
   }
   interface MdcCardActionButtons {}

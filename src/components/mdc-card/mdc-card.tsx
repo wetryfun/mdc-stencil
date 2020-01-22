@@ -10,6 +10,9 @@ import { mdcCard, MdcCardProps } from ".";
   shadow: false
 })
 export class MdcCard implements ComponentInterface {
+  /**
+   * Enables an outline on the card.
+   */
   @Prop() outlined: MdcCardProps["outlined"];
 
   render() {
