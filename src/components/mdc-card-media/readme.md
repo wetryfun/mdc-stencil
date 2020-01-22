@@ -15,9 +15,9 @@
 
 ## Slots
 
-| Slot | Description         |
-| ---- | ------------------- |
-|      | Card media contents |
+| Slot | Description |
+| ---- | ----------- |
+|      | Card media  |
 
 
 ----------------------------------------------

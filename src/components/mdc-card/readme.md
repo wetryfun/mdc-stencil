@@ -26,7 +26,9 @@ Check out an [example](./mdc-card.html)
     <mdc-card-media
       size="square"
       image-url="https://avatars3.githubusercontent.com/u/59491353?s=200&v=4">
-      <h1>Title</h1>
+      <mdc-card-media-content>
+        <h1>Title</h1>
+      </mdc-card-media-content>
     </mdc-card-media>
   </mdc-card-primary-content>
   <mdc-card-actions>

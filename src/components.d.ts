@@ -89,6 +89,7 @@ export namespace Components {
     'imageUrl': MdcCardMediaProps["imageUrl"];
     'size': MdcCardMediaProps["size"];
   }
+  interface MdcCardMediaContent {}
   interface MdcCardPrimaryContent {}
   interface MdcCheckbox {
     'checked': MdcCheckboxProps['checked'];
@@ -249,6 +250,12 @@ declare global {
     new (): HTMLMdcCardMediaElement;
   };
 
+  interface HTMLMdcCardMediaContentElement extends Components.MdcCardMediaContent, HTMLStencilElement {}
+  var HTMLMdcCardMediaContentElement: {
+    prototype: HTMLMdcCardMediaContentElement;
+    new (): HTMLMdcCardMediaContentElement;
+  };
+
   interface HTMLMdcCardPrimaryContentElement extends Components.MdcCardPrimaryContent, HTMLStencilElement {}
   var HTMLMdcCardPrimaryContentElement: {
     prototype: HTMLMdcCardPrimaryContentElement;
@@ -333,6 +340,7 @@ declare global {
     'mdc-card-action-icons': HTMLMdcCardActionIconsElement;
     'mdc-card-actions': HTMLMdcCardActionsElement;
     'mdc-card-media': HTMLMdcCardMediaElement;
+    'mdc-card-media-content': HTMLMdcCardMediaContentElement;
     'mdc-card-primary-content': HTMLMdcCardPrimaryContentElement;
     'mdc-checkbox': HTMLMdcCheckboxElement;
     'mdc-chip-set': HTMLMdcChipSetElement;
@@ -394,6 +402,7 @@ declare namespace LocalJSX {
     'imageUrl'?: MdcCardMediaProps["imageUrl"];
     'size'?: MdcCardMediaProps["size"];
   }
+  interface MdcCardMediaContent {}
   interface MdcCardPrimaryContent {}
   interface MdcCheckbox {
     'checked'?: MdcCheckboxProps['checked'];
@@ -473,6 +482,7 @@ declare namespace LocalJSX {
     'mdc-card-action-icons': MdcCardActionIcons;
     'mdc-card-actions': MdcCardActions;
     'mdc-card-media': MdcCardMedia;
+    'mdc-card-media-content': MdcCardMediaContent;
     'mdc-card-primary-content': MdcCardPrimaryContent;
     'mdc-checkbox': MdcCheckbox;
     'mdc-chip-set': MdcChipSet;
@@ -501,6 +511,7 @@ declare module "@stencil/core" {
       'mdc-card-action-icons': LocalJSX.MdcCardActionIcons & JSXBase.HTMLAttributes<HTMLMdcCardActionIconsElement>;
       'mdc-card-actions': LocalJSX.MdcCardActions & JSXBase.HTMLAttributes<HTMLMdcCardActionsElement>;
       'mdc-card-media': LocalJSX.MdcCardMedia & JSXBase.HTMLAttributes<HTMLMdcCardMediaElement>;
+      'mdc-card-media-content': LocalJSX.MdcCardMediaContent & JSXBase.HTMLAttributes<HTMLMdcCardMediaContentElement>;
       'mdc-card-primary-content': LocalJSX.MdcCardPrimaryContent & JSXBase.HTMLAttributes<HTMLMdcCardPrimaryContentElement>;
       'mdc-checkbox': LocalJSX.MdcCheckbox & JSXBase.HTMLAttributes<HTMLMdcCheckboxElement>;
       'mdc-chip-set': LocalJSX.MdcChipSet & JSXBase.HTMLAttributes<HTMLMdcChipSetElement>;

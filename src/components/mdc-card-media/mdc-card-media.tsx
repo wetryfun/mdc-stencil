@@ -1,8 +1,8 @@
 import { Component, ComponentInterface, h, Host, Prop } from "@stencil/core";
-import { mdcCardMedia, MdcCardMediaContent, MdcCardMediaProps } from ".";
+import { mdcCardMedia, MdcCardMediaProps } from ".";
 
 /**
- * @slot - Card media contents
+ * @slot - Card media
  */
 @Component({
   tag: "mdc-card-media",
@@ -15,9 +15,7 @@ export class MdcCardMedia implements ComponentInterface {
   render() {
     return (
       <Host {...mdcCardMedia(this)}>
-        <MdcCardMediaContent>
-          <slot />
-        </MdcCardMediaContent>
+        <slot />
       </Host>
     );
   }
