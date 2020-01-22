@@ -11,6 +11,10 @@ export interface MdcCheckboxProps
    */
   inputProps?: JSXBase.InputHTMLAttributes<HTMLInputElement>;
   /**
+   * Checkbox id
+   */
+  nativeControlId?: JSXBase.InputHTMLAttributes<HTMLInputElement>["id"];
+  /**
    * Indicates whether the checkbox is indeterminate
    */
   indeterminate?: boolean;
@@ -33,6 +37,7 @@ export const MdcCheckbox: FunctionalComponent<MdcCheckboxProps> = props => {
     name,
     value,
     indeterminate,
+    nativeControlId: id,
     ...rest
   } = {
     ...props
@@ -44,7 +49,15 @@ export const MdcCheckbox: FunctionalComponent<MdcCheckboxProps> = props => {
         class={cssClasses.NATIVE_CONTROL}
         aria-checked={String(!!checked)}
         aria-disabled={String(!!disabled)}
-        {...{ checked, disabled, name, value, indeterminate, ...inputProps }}
+        {...{
+          id,
+          checked,
+          disabled,
+          name,
+          value,
+          indeterminate,
+          ...inputProps
+        }}
       />
       <div class={cssClasses.BACKGROUND}>
         <svg class={cssClasses.CHECKMARK} viewBox="0 0 24 24">

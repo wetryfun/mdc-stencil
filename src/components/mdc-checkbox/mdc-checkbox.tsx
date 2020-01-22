@@ -36,7 +36,7 @@ export class MdcCheckbox implements ComponentInterface {
   /**
    * Checkbox id
    */
-  @Prop() nativeControlId: string;
+  @Prop() nativeControlId: MdcCheckboxProps["nativeControlId"];
 
   private foundation: MDCCheckboxFoundation;
   private element: HTMLDivElement;
@@ -75,7 +75,7 @@ export class MdcCheckbox implements ComponentInterface {
     return {
       addClass: (className: string) => this.element.classList.add(className),
       removeClass: (className: string) =>
-        this.element?.classList.remove(className),
+        this.element.classList.remove(className),
       hasNativeControl: () => Boolean(this.input),
       isAttachedToDOM: () => this.isConnected,
       isChecked: () => this.checked,
@@ -95,17 +95,17 @@ export class MdcCheckbox implements ComponentInterface {
       value,
       name,
       indeterminate,
-      nativeControlId: id
+      nativeControlId
     } = this;
     return (
       <Checkbox
         ref={el => (this.element = el)}
         inputProps={{
-          id,
           ref: el => (this.input = el),
           onChange: (e: TypedEvent<HTMLInputElement>) => this.handleChange(e)
         }}
         {...{
+          nativeControlId,
           disabled,
           indeterminate,
           checked,

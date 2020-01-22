@@ -111,7 +111,7 @@ export namespace Components {
     /**
     * Checkbox id
     */
-    'nativeControlId': string;
+    'nativeControlId': MdcCheckboxProps["nativeControlId"];
     /**
     * Checkbox value
     */
@@ -442,7 +442,7 @@ declare namespace LocalJSX {
     /**
     * Checkbox id
     */
-    'nativeControlId'?: string;
+    'nativeControlId'?: MdcCheckboxProps["nativeControlId"];
     /**
     * Checkbox value
     */
