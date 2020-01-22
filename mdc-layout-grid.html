@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <title>mdc-layout-grid</title>
+    <script type="module" src="./build/mdc-stencil.esm.js"></script>
+    <script nomodule src="./build/mdc-stencil.js"></script>
+  </head>
+  <body>
+    <mdc-layout-grid>
+      <mdc-layout-grid-row>
+        <mdc-layout-grid-cell columns="2">test</mdc-layout-grid-cell>
+        <mdc-layout-grid-cell>test</mdc-layout-grid-cell>
+        <mdc-layout-grid-cell>
+          <mdc-layout-grid-row>
+            <mdc-layout-grid-cell>inner</mdc-layout-grid-cell>
+            <mdc-layout-grid-cell>inner</mdc-layout-grid-cell>
+            <mdc-layout-grid-cell>inner</mdc-layout-grid-cell>
+          </mdc-layout-grid-row>
+        </mdc-layout-grid-cell>
+        <mdc-layout-grid-cell>test</mdc-layout-grid-cell>
+      </mdc-layout-grid-row>
+    </mdc-layout-grid>
+  </body>
+</html>

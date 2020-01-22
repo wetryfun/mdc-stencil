@@ -1,0 +1,1 @@
+const d={ROOT:"mdc-layout-grid",INNER:"mdc-layout-grid__inner",CELL:"mdc-layout-grid__cell",CELL_SPAN:"mdc-layout-grid__cell--span",CELL_ORDER:"mdc-layout-grid__cell--order",CELL_ALIGN:"mdc-layout-grid__cell--align",FIXED_COLUMN_WIDTH:"mdc-layout-grid--fixed-column-width",ALIGN:"mdc-layout-grid--align"},l={DESKTOP:"desktop",PHONE:"phone",TABLET:"tablet"};export{d as C,l as D};
