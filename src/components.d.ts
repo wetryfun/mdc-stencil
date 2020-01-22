@@ -119,7 +119,13 @@ export namespace Components {
     'value': MdcIconButtonProps['value'];
   }
   interface MdcLayoutGrid {
+    /**
+    * The grid is by default center aligned. You can align left or right to change this behavior. Note, this will have no effect when the grid already fills its container.
+    */
     'align': MdcLayoutGridProps["align"];
+    /**
+    * You can designate each column to have a certain width by setting fixedColumnWidth. The column width can be specified through css custom properties `--mdc-layout-grid-column-width-{screen_size}.` The column width is set to 72px on all devices by default.
+    */
     'fixedColumn': MdcLayoutGridProps["fixedColumnWidth"];
   }
   interface MdcLayoutGridCell {
@@ -130,6 +136,7 @@ export namespace Components {
     'phoneColumns'?: MdcLayoutGridCellProps["phoneColumns"];
     'tabletColumns'?: MdcLayoutGridCellProps["tabletColumns"];
   }
+  interface MdcLayoutGridRow {}
   interface MdcLinearProgress {
     'close': () => Promise<void>;
     'getBuffer': () => Promise<number>;
@@ -284,6 +291,12 @@ declare global {
     new (): HTMLMdcLayoutGridCellElement;
   };
 
+  interface HTMLMdcLayoutGridRowElement extends Components.MdcLayoutGridRow, HTMLStencilElement {}
+  var HTMLMdcLayoutGridRowElement: {
+    prototype: HTMLMdcLayoutGridRowElement;
+    new (): HTMLMdcLayoutGridRowElement;
+  };
+
   interface HTMLMdcLinearProgressElement extends Components.MdcLinearProgress, HTMLStencilElement {}
   var HTMLMdcLinearProgressElement: {
     prototype: HTMLMdcLinearProgressElement;
@@ -327,6 +340,7 @@ declare global {
     'mdc-icon-button': HTMLMdcIconButtonElement;
     'mdc-layout-grid': HTMLMdcLayoutGridElement;
     'mdc-layout-grid-cell': HTMLMdcLayoutGridCellElement;
+    'mdc-layout-grid-row': HTMLMdcLayoutGridRowElement;
     'mdc-linear-progress': HTMLMdcLinearProgressElement;
     'mdc-select': HTMLMdcSelectElement;
     'mdc-snackbar': HTMLMdcSnackbarElement;
@@ -402,7 +416,13 @@ declare namespace LocalJSX {
     'value'?: MdcIconButtonProps['value'];
   }
   interface MdcLayoutGrid {
+    /**
+    * The grid is by default center aligned. You can align left or right to change this behavior. Note, this will have no effect when the grid already fills its container.
+    */
     'align'?: MdcLayoutGridProps["align"];
+    /**
+    * You can designate each column to have a certain width by setting fixedColumnWidth. The column width can be specified through css custom properties `--mdc-layout-grid-column-width-{screen_size}.` The column width is set to 72px on all devices by default.
+    */
     'fixedColumn'?: MdcLayoutGridProps["fixedColumnWidth"];
   }
   interface MdcLayoutGridCell {
@@ -413,6 +433,7 @@ declare namespace LocalJSX {
     'phoneColumns'?: MdcLayoutGridCellProps["phoneColumns"];
     'tabletColumns'?: MdcLayoutGridCellProps["tabletColumns"];
   }
+  interface MdcLayoutGridRow {}
   interface MdcLinearProgress {}
   interface MdcSelect {
     'disabled'?: MdcSelectProps['disabled'];
@@ -459,6 +480,7 @@ declare namespace LocalJSX {
     'mdc-icon-button': MdcIconButton;
     'mdc-layout-grid': MdcLayoutGrid;
     'mdc-layout-grid-cell': MdcLayoutGridCell;
+    'mdc-layout-grid-row': MdcLayoutGridRow;
     'mdc-linear-progress': MdcLinearProgress;
     'mdc-select': MdcSelect;
     'mdc-snackbar': MdcSnackbar;
@@ -486,6 +508,7 @@ declare module "@stencil/core" {
       'mdc-icon-button': LocalJSX.MdcIconButton & JSXBase.HTMLAttributes<HTMLMdcIconButtonElement>;
       'mdc-layout-grid': LocalJSX.MdcLayoutGrid & JSXBase.HTMLAttributes<HTMLMdcLayoutGridElement>;
       'mdc-layout-grid-cell': LocalJSX.MdcLayoutGridCell & JSXBase.HTMLAttributes<HTMLMdcLayoutGridCellElement>;
+      'mdc-layout-grid-row': LocalJSX.MdcLayoutGridRow & JSXBase.HTMLAttributes<HTMLMdcLayoutGridRowElement>;
       'mdc-linear-progress': LocalJSX.MdcLinearProgress & JSXBase.HTMLAttributes<HTMLMdcLinearProgressElement>;
       'mdc-select': LocalJSX.MdcSelect & JSXBase.HTMLAttributes<HTMLMdcSelectElement>;
       'mdc-snackbar': LocalJSX.MdcSnackbar & JSXBase.HTMLAttributes<HTMLMdcSnackbarElement>;

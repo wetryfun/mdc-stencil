@@ -3,15 +3,25 @@ import { JSXBase } from "@stencil/core/internal";
 import { classNames } from "../utils";
 import { CSS_CLASSES } from "./constant";
 
+export type Alignment = "left" | "right";
+
 export interface MdcLayoutGridProps
   extends JSXBase.HTMLAttributes<HTMLDivElement> {
-  align?: "left" | "right";
+  /**
+   * The grid is by default center aligned.
+   * You can align left or right to change this behavior.
+   * Note, this will have no effect when the grid already fills its container.
+   */
+  align?: Alignment;
+  /**
+   * You can designate each column to have a certain width by setting fixedColumnWidth.
+   * The column width can be specified through css custom properties `--mdc-layout-grid-column-width-{screen_size}.`
+   * The column width is set to 72px on all devices by default.
+   */
   fixedColumnWidth?: boolean;
-  tag?: string;
-}
-
-export interface MdcLayoutGridInnerProps
-  extends JSXBase.HTMLAttributes<HTMLDivElement> {
+  /**
+   * The tag type to render (default 'div')
+   */
   tag?: string;
 }
 
@@ -36,23 +46,4 @@ export const MdcLayoutGrid: FunctionalComponent<MdcLayoutGridProps> = (
 ) => {
   const { tag: Tag = "div", ...rest } = { ...props };
   return <Tag {...mdcLayoutGrid(rest)}>{children}</Tag>;
-};
-
-export const mdcLayoutGridInner = ({
-  class: className,
-  ...rest
-}: MdcLayoutGridProps) => ({
-  class: {
-    [CSS_CLASSES.INNER]: true,
-    ...classNames(className)
-  },
-  ...rest
-});
-
-export const MdcLayoutGridInner: FunctionalComponent<MdcLayoutGridInnerProps> = (
-  props,
-  children
-) => {
-  const { tag: Tag = "div", ...rest } = { ...props };
-  return <Tag {...mdcLayoutGridInner(rest)}>{children}</Tag>;
 };
