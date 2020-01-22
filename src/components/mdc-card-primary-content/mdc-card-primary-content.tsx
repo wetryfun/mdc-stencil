@@ -9,7 +9,7 @@ import {
 import { mdcCardPrimaryContent } from ".";
 
 /**
- * @slot default - Primary content
+ * @slot - Primary content
  */
 @Component({
   tag: "mdc-card-primary-content",

@@ -11,9 +11,9 @@ You should also assign tabindex="0" to ensure it can also be interacted with via
 
 ## Slots
 
-| Slot        | Description     |
-| ----------- | --------------- |
-| `"default"` | Primary content |
+| Slot | Description     |
+| ---- | --------------- |
+|      | Primary content |
 
 
 ----------------------------------------------

@@ -13,6 +13,13 @@
 | `size`     | `size`      |             | `"square" or "wide"` | `undefined` |
 
 
+## Slots
+
+| Slot | Description         |
+| ---- | ------------------- |
+|      | Card media contents |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

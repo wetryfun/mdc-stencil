@@ -48,6 +48,13 @@ Check out an [example](./mdc-card.html)
 | `outlined` | `outlined` |             | `boolean` | `undefined` |
 
 
+## Slots
+
+| Slot | Description   |
+| ---- | ------------- |
+|      | Card contents |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

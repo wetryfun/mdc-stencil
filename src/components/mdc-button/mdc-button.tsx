@@ -10,6 +10,9 @@ import {
 import { mdcButton, MdcButtonIcon, MdcButtonProps } from ".";
 import { CSS_CLASSES } from "./constant";
 
+/**
+ * @slot - Button contents
+ */
 @Component({
   tag: "mdc-button",
   styleUrl: "mdc-button.scss",

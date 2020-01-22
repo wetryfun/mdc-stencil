@@ -1,6 +1,9 @@
 import { Component, ComponentInterface, h, Host } from "@stencil/core";
 import { mdcLayoutGridRow } from ".";
 
+/**
+ * @slot - Grid cells
+ */
 @Component({
   tag: "mdc-layout-grid-row",
   shadow: false

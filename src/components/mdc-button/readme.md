@@ -20,6 +20,13 @@ A Stencil version of an [MDC Button](https://github.com/material-components/mate
 | `unelevated`   | `unelevated`    | Creates a contained button that is flush with the surface.                        | `boolean` | `false` |
 
 
+## Slots
+
+| Slot | Description     |
+| ---- | --------------- |
+|      | Button contents |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

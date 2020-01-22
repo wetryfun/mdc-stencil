@@ -2,7 +2,7 @@ import { Component, ComponentInterface, h, Host, Prop } from "@stencil/core";
 import { mdcLayoutGrid, MdcLayoutGridProps } from ".";
 
 /**
- * @slot default - Grid contents
+ * @slot - Grid rows
  */
 @Component({
   tag: "mdc-layout-grid",

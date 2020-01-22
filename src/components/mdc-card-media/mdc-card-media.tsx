@@ -1,6 +1,9 @@
 import { Component, ComponentInterface, h, Host, Prop } from "@stencil/core";
 import { mdcCardMedia, MdcCardMediaContent, MdcCardMediaProps } from ".";
 
+/**
+ * @slot - Card media contents
+ */
 @Component({
   tag: "mdc-card-media",
   shadow: false

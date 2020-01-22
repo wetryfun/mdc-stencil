@@ -55,9 +55,9 @@ However, the Material Design guidelines do not recommend having a deeply nested 
 
 ## Slots
 
-| Slot        | Description   |
-| ----------- | ------------- |
-| `"default"` | Grid contents |
+| Slot | Description |
+| ---- | ----------- |
+|      | Grid rows   |
 
 
 ----------------------------------------------

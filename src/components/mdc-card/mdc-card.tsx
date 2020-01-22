@@ -1,6 +1,9 @@
 import { Component, ComponentInterface, h, Host, Prop } from "@stencil/core";
 import { mdcCard, MdcCardProps } from ".";
 
+/**
+ * @slot - Card contents
+ */
 @Component({
   tag: "mdc-card",
   styleUrl: "mdc-card.scss",
