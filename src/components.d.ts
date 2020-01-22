@@ -92,12 +92,30 @@ export namespace Components {
   interface MdcCardMediaContent {}
   interface MdcCardPrimaryContent {}
   interface MdcCheckbox {
-    'checked': MdcCheckboxProps['checked'];
-    'disabled': MdcCheckboxProps['disabled'];
-    'indeterminate': MdcCheckboxProps['indeterminate'];
-    'layout': () => Promise<void>;
-    'name': MdcCheckboxProps['name'];
-    'value': MdcCheckboxProps['value'];
+    /**
+    * Indicates whether the checkbox is checked ("on")
+    */
+    'checked': MdcCheckboxProps["checked"];
+    /**
+    * Indicates whether the checkbox is disabled
+    */
+    'disabled': MdcCheckboxProps["disabled"];
+    /**
+    * Indicates whether the checkbox is indeterminate
+    */
+    'indeterminate': MdcCheckboxProps["indeterminate"];
+    /**
+    * Checkbox name
+    */
+    'name': MdcCheckboxProps["name"];
+    /**
+    * Checkbox id
+    */
+    'nativeControlId': string;
+    /**
+    * Checkbox value
+    */
+    'value': MdcCheckboxProps["value"];
   }
   interface MdcChipSet {
     'addChip': (chipEl: HTMLElement) => Promise<void>;
@@ -405,11 +423,30 @@ declare namespace LocalJSX {
   interface MdcCardMediaContent {}
   interface MdcCardPrimaryContent {}
   interface MdcCheckbox {
-    'checked'?: MdcCheckboxProps['checked'];
-    'disabled'?: MdcCheckboxProps['disabled'];
-    'indeterminate'?: MdcCheckboxProps['indeterminate'];
-    'name'?: MdcCheckboxProps['name'];
-    'value'?: MdcCheckboxProps['value'];
+    /**
+    * Indicates whether the checkbox is checked ("on")
+    */
+    'checked'?: MdcCheckboxProps["checked"];
+    /**
+    * Indicates whether the checkbox is disabled
+    */
+    'disabled'?: MdcCheckboxProps["disabled"];
+    /**
+    * Indicates whether the checkbox is indeterminate
+    */
+    'indeterminate'?: MdcCheckboxProps["indeterminate"];
+    /**
+    * Checkbox name
+    */
+    'name'?: MdcCheckboxProps["name"];
+    /**
+    * Checkbox id
+    */
+    'nativeControlId'?: string;
+    /**
+    * Checkbox value
+    */
+    'value'?: MdcCheckboxProps["value"];
   }
   interface MdcChipSet {}
   interface MdcDialog {

@@ -1,6 +1,6 @@
 import { FunctionalComponent, h } from '@stencil/core';
 import { JSXBase } from '@stencil/core/internal';
-import { InputEvent, classNames, unique } from '../utils';
+import { TypedEvent, classNames, unique } from '../utils';
 
 export interface MdcTextFieldProps
   extends JSXBase.InputHTMLAttributes<HTMLDivElement>,
@@ -8,7 +8,7 @@ export interface MdcTextFieldProps
   inputRef?: JSXBase.InputHTMLAttributes<
     HTMLInputElement | HTMLTextAreaElement
   >['ref'];
-  onInput?: (ev: InputEvent<HTMLInputElement>) => void;
+  onInput?: (ev: TypedEvent<HTMLInputElement>) => void;
   fullWidth?: boolean;
   textarea?: boolean;
   outlined?: boolean;

@@ -1,6 +1,6 @@
 import { JSXBase } from '@stencil/core/internal';
 
-export type InputEvent<T extends EventTarget, E extends UIEvent = UIEvent> = {
+export type TypedEvent<T extends EventTarget, E extends UIEvent = UIEvent> = {
   target: T;
 } & E;
 

@@ -1,54 +1,113 @@
-import { h, Component, Prop, ComponentInterface, Method } from '@stencil/core';
-import { MdcCheckbox as Checkbox, MdcCheckboxProps } from '.';
-import { MDCCheckbox } from '@material/checkbox';
+import { MDCCheckboxAdapter } from "@material/checkbox/adapter";
+import { MDCCheckboxFoundation } from "@material/checkbox/foundation";
+import { Component, ComponentInterface, h, Prop } from "@stencil/core";
+import { MdcCheckbox as Checkbox, MdcCheckboxProps } from ".";
+import { TypedEvent } from "../utils";
 
 @Component({
-  tag: 'mdc-checkbox',
-  styleUrl: 'mdc-checkbox.scss',
+  tag: "mdc-checkbox",
+  styleUrl: "mdc-checkbox.scss",
   shadow: false
 })
 export class MdcCheckbox implements ComponentInterface {
-  @Prop() checked: MdcCheckboxProps['checked'];
-  @Prop() disabled: MdcCheckboxProps['disabled'];
-  @Prop() indeterminate: MdcCheckboxProps['indeterminate'];
-  @Prop() name: MdcCheckboxProps['name'];
-  @Prop() value: MdcCheckboxProps['value'];
+  /**
+   * Indicates whether the checkbox is checked ("on")
+   */
+  @Prop({ mutable: true }) checked: MdcCheckboxProps["checked"];
+  /**
+   * Indicates whether the checkbox is disabled
+   */
+  @Prop({ mutable: true }) disabled: MdcCheckboxProps["disabled"];
+  /**
+   * Indicates whether the checkbox is indeterminate
+   */
+  @Prop({ mutable: true }) indeterminate: MdcCheckboxProps["indeterminate"];
+  /**
+   * Checkbox name
+   */
+  @Prop() name: MdcCheckboxProps["name"];
+  /**
+   * Checkbox value
+   */
+  @Prop() value: MdcCheckboxProps["value"];
+  /**
+   * Checkbox id
+   */
+  @Prop() nativeControlId: string;
 
-  private checkbox: HTMLElement;
-  private mdcCheckbox: MDCCheckbox;
+  private foundation!: MDCCheckboxFoundation;
+  private element: HTMLDivElement;
+  private input: HTMLInputElement;
 
-  @Method()
-  async layout() {
-    this.mdcCheckbox.ripple.layout();
+  connectedCallback() {
+    this.foundation = new MDCCheckboxFoundation(this.adapter);
+    this.foundation.init();
+    this.foundation.setDisabled(this.disabled);
   }
 
-  componentDidLoad() {
-    this.mdcCheckbox = new MDCCheckbox(this.checkbox);
+  disconnectedCallback() {
+    this.foundation.destroy();
+    delete this.foundation;
   }
 
-  componentDidUnload() {
-    this.mdcCheckbox.destroy();
+  handleChange(ev: TypedEvent<HTMLInputElement>) {
+    const { indeterminate, checked } = ev.target;
+    this.checked = checked;
+    this.indeterminate = indeterminate;
+    this.foundation.handleChange();
   }
 
-  componentDidRender() {
-    const { mdcCheckbox, checked, disabled, indeterminate } = this;
-    if (mdcCheckbox) {
-      mdcCheckbox.checked = checked;
-      mdcCheckbox.disabled = disabled;
-      mdcCheckbox.indeterminate = indeterminate;
-      mdcCheckbox.ripple.layout();
-    }
+  handleAnimationEnd() {
+    this.foundation.handleAnimationEnd();
+  }
+
+  get adapter(): MDCCheckboxAdapter {
+    return {
+      addClass: (className: string) => this.element?.classList.add(className),
+      removeClass: (className: string) =>
+        this.element?.classList.remove(className),
+      hasNativeControl: () => Boolean(this.input),
+      isAttachedToDOM: () => Boolean(this.foundation),
+      isChecked: () => this.checked,
+      isIndeterminate: () => this.indeterminate,
+      setNativeControlAttr: (attr, value) =>
+        this.input.setAttribute(attr, value),
+      setNativeControlDisabled: disabled => {
+        if (this.input) {
+          this.input.disabled = disabled;
+        }
+      },
+      removeNativeControlAttr: attr => this.input?.removeAttribute(attr),
+      forceLayout: () => this.element?.offsetWidth
+    };
   }
 
   render() {
-    const { checked, disabled, indeterminate, name, value } = this;
+    const {
+      checked,
+      disabled,
+      value,
+      name,
+      indeterminate,
+      nativeControlId: id
+    } = this;
     return (
       <Checkbox
-        ref={el => (this.checkbox = el)}
-        {...{ checked, disabled, indeterminate, name, value }}
-      >
-        <slot />
-      </Checkbox>
+        ref={el => (this.element = el)}
+        inputProps={{
+          id,
+          ref: el => (this.input = el),
+          onChange: (e: TypedEvent<HTMLInputElement>) => this.handleChange(e)
+        }}
+        {...{
+          disabled,
+          indeterminate,
+          checked,
+          value,
+          name
+        }}
+        onAnimationEnd={() => this.handleAnimationEnd()}
+      ></Checkbox>
     );
   }
 }

@@ -7,26 +7,14 @@
 
 ## Properties
 
-| Property        | Attribute       | Description | Type                           | Default     |
-| --------------- | --------------- | ----------- | ------------------------------ | ----------- |
-| `checked`       | `checked`       |             | `boolean`                      | `undefined` |
-| `disabled`      | `disabled`      |             | `boolean`                      | `undefined` |
-| `indeterminate` | `indeterminate` |             | `boolean`                      | `undefined` |
-| `name`          | `name`          |             | `string`                       | `undefined` |
-| `value`         | `value`         |             | `number or string or string[]` | `undefined` |
-
-
-## Methods
-
-### `layout() => Promise<void>`
-
-
-
-#### Returns
-
-Type: `Promise<void>`
-
-
+| Property          | Attribute           | Description                                      | Type                           | Default     |
+| ----------------- | ------------------- | ------------------------------------------------ | ------------------------------ | ----------- |
+| `checked`         | `checked`           | Indicates whether the checkbox is checked ("on") | `boolean`                      | `undefined` |
+| `disabled`        | `disabled`          | Indicates whether the checkbox is disabled       | `boolean`                      | `undefined` |
+| `indeterminate`   | `indeterminate`     | Indicates whether the checkbox is indeterminate  | `boolean`                      | `undefined` |
+| `name`            | `name`              | Checkbox name                                    | `string`                       | `undefined` |
+| `nativeControlId` | `native-control-id` | Checkbox id                                      | `string`                       | `undefined` |
+| `value`           | `value`             | Checkbox value                                   | `number or string or string[]` | `undefined` |
 
 
 ----------------------------------------------
