@@ -21,7 +21,8 @@ export class MdcCheckbox implements ComponentInterface {
   /**
    * Indicates whether the checkbox is indeterminate
    */
-  @Prop({ mutable: true }) indeterminate: MdcCheckboxProps["indeterminate"] = false;
+  @Prop({ mutable: true })
+  indeterminate: MdcCheckboxProps["indeterminate"] = false;
   /**
    * Checkbox name
    */
@@ -35,19 +36,20 @@ export class MdcCheckbox implements ComponentInterface {
    */
   @Prop() nativeControlId: string;
 
-  private foundation!: MDCCheckboxFoundation;
+  private foundation: MDCCheckboxFoundation;
   private element: HTMLDivElement;
   private input: HTMLInputElement;
+  private isConnected = false;
 
-  connectedCallback() {
+  componentDidLoad() {
     this.foundation = new MDCCheckboxFoundation(this.adapter);
     this.foundation.init();
-    this.foundation.setDisabled(this.disabled);
+    this.isConnected = true;
   }
 
-  disconnectedCallback() {
+  componentDidUnload() {
     this.foundation.destroy();
-    delete this.foundation;
+    this.isConnected = false;
   }
 
   handleChange(ev: TypedEvent<HTMLInputElement>) {
@@ -63,22 +65,18 @@ export class MdcCheckbox implements ComponentInterface {
 
   get adapter(): MDCCheckboxAdapter {
     return {
-      addClass: (className: string) => this.element?.classList.add(className),
+      addClass: (className: string) => this.element.classList.add(className),
       removeClass: (className: string) =>
         this.element?.classList.remove(className),
       hasNativeControl: () => Boolean(this.input),
-      isAttachedToDOM: () => Boolean(this.foundation),
+      isAttachedToDOM: () => this.isConnected,
       isChecked: () => this.checked,
       isIndeterminate: () => this.indeterminate,
       setNativeControlAttr: (attr, value) =>
         this.input.setAttribute(attr, value),
-      setNativeControlDisabled: disabled => {
-        if (this.input) {
-          this.input.disabled = disabled;
-        }
-      },
-      removeNativeControlAttr: attr => this.input?.removeAttribute(attr),
-      forceLayout: () => this.element?.offsetWidth
+      setNativeControlDisabled: disabled => (this.input.disabled = disabled),
+      removeNativeControlAttr: attr => this.input.removeAttribute(attr),
+      forceLayout: () => this.element.offsetWidth
     };
   }
 
@@ -107,7 +105,7 @@ export class MdcCheckbox implements ComponentInterface {
           name
         }}
         onAnimationEnd={() => this.handleAnimationEnd()}
-      ></Checkbox>
+      />
     );
   }
 }
