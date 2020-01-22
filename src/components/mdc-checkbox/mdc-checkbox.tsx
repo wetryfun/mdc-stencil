@@ -13,15 +13,15 @@ export class MdcCheckbox implements ComponentInterface {
   /**
    * Indicates whether the checkbox is checked ("on")
    */
-  @Prop({ mutable: true }) checked: MdcCheckboxProps["checked"];
+  @Prop({ mutable: true }) checked: MdcCheckboxProps["checked"] = false;
   /**
    * Indicates whether the checkbox is disabled
    */
-  @Prop({ mutable: true }) disabled: MdcCheckboxProps["disabled"];
+  @Prop({ mutable: true }) disabled: MdcCheckboxProps["disabled"] = false;
   /**
    * Indicates whether the checkbox is indeterminate
    */
-  @Prop({ mutable: true }) indeterminate: MdcCheckboxProps["indeterminate"];
+  @Prop({ mutable: true }) indeterminate: MdcCheckboxProps["indeterminate"] = false;
   /**
    * Checkbox name
    */
