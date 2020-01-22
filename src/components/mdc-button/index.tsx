@@ -1,7 +1,7 @@
 import { FunctionalComponent, h } from "@stencil/core";
 import { JSXBase } from "@stencil/core/internal";
 import { classNames } from "../utils";
-import CSS_CLASSES from "./constant";
+import { CSS_CLASSES } from "./constant";
 
 export interface MdcButtonProps
   extends JSXBase.InputHTMLAttributes<HTMLButtonElement> {

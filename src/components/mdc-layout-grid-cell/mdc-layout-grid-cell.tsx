@@ -1,34 +1,26 @@
-import { Component, ComponentInterface, h, Prop, Host } from "@stencil/core";
-import { MdcLayoutGridCellProps, MdcLayoutGridCellClassNames } from ".";
+import { Component, ComponentInterface, h, Host, Prop } from "@stencil/core";
+import { mdcLayoutGridCell, MdcLayoutGridCellProps } from ".";
 
 @Component({
   tag: "mdc-layout-grid-cell",
-  styleUrl: "../mdc-layout-grid/mdc-layout-grid.scss",
   shadow: false
 })
 export class MdcLayoutGrid implements ComponentInterface {
-  @Prop() span?: MdcLayoutGridCellProps["span"];
+  @Prop() columns?: MdcLayoutGridCellProps["columns"];
 
-  @Prop() spanDesktop?: MdcLayoutGridCellProps["spanDesktop"];
+  @Prop() desktopColumns?: MdcLayoutGridCellProps["desktopColumns"];
 
-  @Prop() spanTablet?: MdcLayoutGridCellProps["spanTablet"];
+  @Prop() tabletColumns?: MdcLayoutGridCellProps["tabletColumns"];
 
-  @Prop() spanPhone?: MdcLayoutGridCellProps["spanPhone"];
+  @Prop() phoneColumns?: MdcLayoutGridCellProps["phoneColumns"];
 
   @Prop() align?: MdcLayoutGridCellProps["align"];
 
+  @Prop() order?: MdcLayoutGridCellProps["order"];
+
   render() {
-    const { span, spanDesktop, spanPhone, spanTablet, align } = this;
     return (
-      <Host
-        class={MdcLayoutGridCellClassNames({
-          span,
-          spanDesktop,
-          spanPhone,
-          spanTablet,
-          align
-        })}
-      >
+      <Host {...mdcLayoutGridCell(this)}>
         <slot />
       </Host>
     );

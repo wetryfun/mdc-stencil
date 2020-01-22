@@ -14,5 +14,3 @@ export const CSS_CLASSES = {
   ACTION_BUTTON: "mdc-card__action--button",
   ACTION_ICON: "mdc-card__action--icon"
 };
-
-export default CSS_CLASSES;

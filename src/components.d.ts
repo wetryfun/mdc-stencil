@@ -29,6 +29,9 @@ import {
   MDCRipple,
 } from '@material/ripple';
 import {
+  MdcLayoutGridProps,
+} from './components/mdc-layout-grid';
+import {
   MdcLayoutGridCellProps,
 } from './components/mdc-layout-grid-cell';
 import {
@@ -115,13 +118,17 @@ export namespace Components {
     'type': MdcIconButtonProps['type'];
     'value': MdcIconButtonProps['value'];
   }
-  interface MdcLayoutGrid {}
+  interface MdcLayoutGrid {
+    'align': MdcLayoutGridProps["align"];
+    'fixedColumn': MdcLayoutGridProps["fixedColumnWidth"];
+  }
   interface MdcLayoutGridCell {
     'align'?: MdcLayoutGridCellProps["align"];
-    'span'?: MdcLayoutGridCellProps["span"];
-    'spanDesktop'?: MdcLayoutGridCellProps["spanDesktop"];
-    'spanPhone'?: MdcLayoutGridCellProps["spanPhone"];
-    'spanTablet'?: MdcLayoutGridCellProps["spanTablet"];
+    'columns'?: MdcLayoutGridCellProps["columns"];
+    'desktopColumns'?: MdcLayoutGridCellProps["desktopColumns"];
+    'order'?: MdcLayoutGridCellProps["order"];
+    'phoneColumns'?: MdcLayoutGridCellProps["phoneColumns"];
+    'tabletColumns'?: MdcLayoutGridCellProps["tabletColumns"];
   }
   interface MdcLinearProgress {
     'close': () => Promise<void>;
@@ -394,13 +401,17 @@ declare namespace LocalJSX {
     'type'?: MdcIconButtonProps['type'];
     'value'?: MdcIconButtonProps['value'];
   }
-  interface MdcLayoutGrid {}
+  interface MdcLayoutGrid {
+    'align'?: MdcLayoutGridProps["align"];
+    'fixedColumn'?: MdcLayoutGridProps["fixedColumnWidth"];
+  }
   interface MdcLayoutGridCell {
     'align'?: MdcLayoutGridCellProps["align"];
-    'span'?: MdcLayoutGridCellProps["span"];
-    'spanDesktop'?: MdcLayoutGridCellProps["spanDesktop"];
-    'spanPhone'?: MdcLayoutGridCellProps["spanPhone"];
-    'spanTablet'?: MdcLayoutGridCellProps["spanTablet"];
+    'columns'?: MdcLayoutGridCellProps["columns"];
+    'desktopColumns'?: MdcLayoutGridCellProps["desktopColumns"];
+    'order'?: MdcLayoutGridCellProps["order"];
+    'phoneColumns'?: MdcLayoutGridCellProps["phoneColumns"];
+    'tabletColumns'?: MdcLayoutGridCellProps["tabletColumns"];
   }
   interface MdcLinearProgress {}
   interface MdcSelect {

@@ -8,5 +8,3 @@ export const CSS_CLASSES = {
   OUTLINED: "mdc-button--outlined",
   UNELEVATED: "mdc-button--unelevated"
 };
-
-export default CSS_CLASSES;
