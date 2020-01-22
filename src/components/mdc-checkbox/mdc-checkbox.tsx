@@ -13,11 +13,13 @@ export class MdcCheckbox implements ComponentInterface {
   /**
    * Indicates whether the checkbox is checked ("on")
    */
-  @Prop({ mutable: true }) checked: MdcCheckboxProps["checked"] = false;
+  @Prop({ mutable: true })
+  checked: MdcCheckboxProps["checked"] = false;
   /**
    * Indicates whether the checkbox is disabled
    */
-  @Prop({ mutable: true }) disabled: MdcCheckboxProps["disabled"] = false;
+  @Prop({ mutable: true })
+  disabled: MdcCheckboxProps["disabled"] = false;
   /**
    * Indicates whether the checkbox is indeterminate
    */
@@ -41,15 +43,21 @@ export class MdcCheckbox implements ComponentInterface {
   private input: HTMLInputElement;
   private isConnected = false;
 
-  componentDidLoad() {
-    this.foundation = new MDCCheckboxFoundation(this.adapter);
-    this.foundation.init();
+  connectedCallback() {
     this.isConnected = true;
+  }
+
+  disconnectedCallback() {
+    this.isConnected = false;
+  }
+
+  componentDidLoad() {
+    this.foundation = new MDCCheckboxFoundation(this.adapter());
+    this.foundation.init();
   }
 
   componentDidUnload() {
     this.foundation.destroy();
-    this.isConnected = false;
   }
 
   handleChange(ev: TypedEvent<HTMLInputElement>) {
@@ -63,7 +71,7 @@ export class MdcCheckbox implements ComponentInterface {
     this.foundation.handleAnimationEnd();
   }
 
-  get adapter(): MDCCheckboxAdapter {
+  adapter(): MDCCheckboxAdapter {
     return {
       addClass: (className: string) => this.element.classList.add(className),
       removeClass: (className: string) =>
