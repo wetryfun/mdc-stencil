@@ -1,12 +1,11 @@
 import { h, FunctionalComponent } from "@stencil/core";
 import { JSXBase } from "@stencil/core/internal";
-import { classNames } from "../utils";
+import { classNames, MdcComponentProps } from "../utils";
 import { CSS_CLASSES } from "../mdc-layout-grid/constant";
 
 export interface MdcLayoutGridRowProps
-  extends JSXBase.HTMLAttributes<HTMLDivElement> {
-  tag?: string;
-}
+  extends MdcComponentProps,
+    JSXBase.HTMLAttributes<HTMLDivElement> {}
 
 export const mdcLayoutGridRow = ({
   class: className,

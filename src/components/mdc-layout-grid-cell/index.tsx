@@ -1,7 +1,7 @@
 import { FunctionalComponent, h } from "@stencil/core";
 import { JSXBase } from "@stencil/core/internal";
 import { CSS_CLASSES, DEVICE_TYPE } from "../mdc-layout-grid/constant";
-import { classNames } from "../utils";
+import { classNames, MdcComponentProps } from "../utils";
 
 export type TwelveColumn = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 export type FourColumn = 1 | 2 | 3 | 4;
@@ -9,14 +9,14 @@ export type EightColumn = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 export type Alignment = "bottom" | "middle" | "top";
 
 export interface MdcLayoutGridCellProps
-  extends JSXBase.HTMLAttributes<HTMLDivElement> {
+  extends MdcComponentProps,
+    JSXBase.HTMLAttributes<HTMLDivElement> {
   columns?: TwelveColumn;
   desktopColumns?: TwelveColumn;
   tabletColumns?: EightColumn;
   phoneColumns?: FourColumn;
   order?: TwelveColumn;
   align?: Alignment;
-  tag?: string;
 }
 
 export const mdcLayoutGridCell = ({

@@ -1,12 +1,13 @@
-import { h, FunctionalComponent } from "@stencil/core";
+import { FunctionalComponent, h } from "@stencil/core";
 import { JSXBase } from "@stencil/core/internal";
-import { classNames } from "../utils";
+import { classNames, MdcComponentProps } from "../utils";
 import { CSS_CLASSES } from "./constant";
 
 export type Alignment = "left" | "right";
 
 export interface MdcLayoutGridProps
-  extends JSXBase.HTMLAttributes<HTMLDivElement> {
+  extends MdcComponentProps,
+    JSXBase.HTMLAttributes<HTMLDivElement> {
   /**
    * The grid is by default center aligned.
    * You can align left or right to change this behavior.
@@ -19,10 +20,6 @@ export interface MdcLayoutGridProps
    * The column width is set to 72px on all devices by default.
    */
   fixedColumnWidth?: boolean;
-  /**
-   * The tag type to render (default 'div')
-   */
-  tag?: string;
 }
 
 export const mdcLayoutGrid = ({

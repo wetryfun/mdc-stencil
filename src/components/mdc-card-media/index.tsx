@@ -1,10 +1,11 @@
-import { JSXBase } from '@stencil/core/internal';
-import { FunctionalComponent, h } from '@stencil/core';
-import { CSS_CLASSES } from '../mdc-card/constant';
-import { classNames } from '../utils';
+import { FunctionalComponent, h } from "@stencil/core";
+import { JSXBase } from "@stencil/core/internal";
+import { CSS_CLASSES } from "../mdc-card/constant";
+import { classNames, MdcComponentProps } from "../utils";
 
 export interface MdcCardMediaProps
-  extends JSXBase.HTMLAttributes<HTMLDivElement> {
+  extends MdcComponentProps,
+    JSXBase.HTMLAttributes<HTMLDivElement> {
   /**
    * Scales the height of the image.
    */
@@ -41,15 +42,17 @@ export const MdcCardMedia: FunctionalComponent<MdcCardMediaProps> = (
   props,
   children
 ) => {
+  const { tag: Tag = "div", ...rest } = { ...props };
   return (
-    <div {...mdcCardMedia({ ...props })}>
+    <Tag {...mdcCardMedia(rest)}>
       <MdcCardMediaContent>{children}</MdcCardMediaContent>}
-    </div>
+    </Tag>
   );
 };
 
 export interface MdcCardMediaContentProps
-  extends JSXBase.HTMLAttributes<HTMLDivElement> {}
+  extends MdcComponentProps,
+    JSXBase.HTMLAttributes<HTMLDivElement> {}
 
 export const mdcCardMediaContent = ({
   class: className,
@@ -66,5 +69,6 @@ export const MdcCardMediaContent: FunctionalComponent<MdcCardMediaContentProps> 
   props,
   children
 ) => {
-  return <div {...mdcCardMediaContent({ ...props })}>{children}</div>;
+  const { tag: Tag = "div", ...rest } = { ...props };
+  return <Tag {...mdcCardMediaContent(rest)}>{children}</Tag>;
 };

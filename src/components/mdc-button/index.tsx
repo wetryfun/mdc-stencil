@@ -1,10 +1,10 @@
 import { FunctionalComponent, h } from "@stencil/core";
 import { JSXBase } from "@stencil/core/internal";
-import { classNames } from "../utils";
+import { classNames, MdcComponentProps } from "../utils";
 import { CSS_CLASSES } from "./constant";
 
 export interface MdcButtonProps
-  extends JSXBase.InputHTMLAttributes<HTMLButtonElement> {
+  extends MdcComponentProps, JSXBase.InputHTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
   /**
    * Icon to display, and aria-label value when label is not defined..
    */
@@ -37,10 +37,15 @@ export interface MdcButtonProps
    * When true, icon will be displayed after label.
    */
   trailingIcon?: boolean;
+  /**
+   * The tag type to render (default 'button')
+   */
+  tag?: "button" | "a";
 }
 
 export interface MdcButtonIconProps
-  extends JSXBase.InputHTMLAttributes<HTMLSpanElement> {
+  extends MdcComponentProps,
+    JSXBase.HTMLAttributes<HTMLSpanElement> {
   /**
    * Icon to display
    */
@@ -79,21 +84,22 @@ export const MdcButton: FunctionalComponent<MdcButtonProps> = (
   props,
   children
 ) => {
-  const { icon, trailingIcon, label } = {
+  const { icon, trailingIcon, label, tag: Tag = "button" } = {
     ...props
   };
 
   return (
-    <button {...mdcButton({ ...props })}>
+    <Tag {...mdcButton({ ...props })}>
       <div class={CSS_CLASSES.RIPPLE}></div>
       {icon && !trailingIcon && <MdcButtonIcon icon={icon} />}
       {label && <span class={CSS_CLASSES.LABEL}>{label}</span>}
       {icon && trailingIcon && <MdcButtonIcon icon={icon} />}
       {children}
-    </button>
+    </Tag>
   );
 };
 
-export const MdcButtonIcon: FunctionalComponent<MdcButtonIconProps> = ({
-  icon
-}) => <span class={`material-icons ${CSS_CLASSES.ICON}`}>{icon}</span>;
+export const MdcButtonIcon: FunctionalComponent<MdcButtonIconProps> = props => {
+  const { tag: Tag = "span", icon } = { ...props };
+  return <Tag class={`material-icons ${CSS_CLASSES.ICON}`}>{icon}</Tag>;
+};

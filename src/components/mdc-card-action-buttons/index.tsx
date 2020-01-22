@@ -1,10 +1,11 @@
 import { FunctionalComponent, h } from "@stencil/core";
 import { JSXBase } from "@stencil/core/internal";
-import { classNames } from "../utils";
+import { classNames, MdcComponentProps } from "../utils";
 import { CSS_CLASSES } from "../mdc-card/constant";
 
 export interface MdcCardActionButtonsProps
-  extends JSXBase.HTMLAttributes<HTMLDivElement> {}
+  extends MdcComponentProps, JSXBase.HTMLAttributes<HTMLDivElement> {
+}
 
 export const mdcCardActionButtons = ({
   class: className,
@@ -22,5 +23,6 @@ export const MdcCardActionButtons: FunctionalComponent<MdcCardActionButtonsProps
   props,
   children
 ) => {
-  return <div {...mdcCardActionButtons({ ...props })}>{children}</div>;
+  const { tag: Tag = "div", ...rest } = { ...props };
+  return <Tag {...mdcCardActionButtons(rest)}>{children}</Tag>;
 };

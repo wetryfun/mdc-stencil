@@ -1,10 +1,11 @@
-import { JSXBase } from '@stencil/core/internal';
-import { FunctionalComponent, h } from '@stencil/core';
-import { CSS_CLASSES } from '../mdc-card/constant';
-import { classNames } from '../utils';
+import { FunctionalComponent, h } from "@stencil/core";
+import { JSXBase } from "@stencil/core/internal";
+import { CSS_CLASSES } from "../mdc-card/constant";
+import { classNames, MdcComponentProps } from "../utils";
 
 export interface MdcCardActionsProps
-  extends JSXBase.HTMLAttributes<HTMLDivElement> {
+  extends MdcComponentProps,
+    JSXBase.HTMLAttributes<HTMLDivElement> {
   /**
    * 	Enables full bleed card actions row by removing all padding.
    */
@@ -32,5 +33,6 @@ export const MdcCardActions: FunctionalComponent<MdcCardActionsProps> = (
   props,
   children
 ) => {
-  return <div {...mdcCardActions({ ...props })}>{children}</div>;
+  const { tag: Tag = "div", ...rest } = { ...props };
+  return <Tag {...mdcCardActions(rest)}>{children}</Tag>;
 };

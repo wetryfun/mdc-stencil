@@ -4,6 +4,13 @@ export type InputEvent<T extends EventTarget, E extends UIEvent = UIEvent> = {
   target: T;
 } & E;
 
+export interface MdcComponentProps {
+  /**
+   * The tag type to render (default 'div')
+   */
+  tag?: string;
+}
+
 export const classNames = (
   className: JSXBase.HTMLAttributes<HTMLElement>['class']
 ) => {

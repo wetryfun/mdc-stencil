@@ -1,10 +1,10 @@
 import { JSXBase } from '@stencil/core/internal';
 import { FunctionalComponent, h } from '@stencil/core';
 import { CSS_CLASSES } from '../mdc-card/constant';
-import { classNames } from '../utils';
+import { classNames, MdcComponentProps } from '../utils';
 
 export interface MdcCardPrimaryContentProps
-  extends JSXBase.HTMLAttributes<HTMLDivElement> {}
+  extends MdcComponentProps, JSXBase.HTMLAttributes<HTMLDivElement> {}
 
   export const mdcCardPrimaryContent = ({
     class: className,
@@ -21,6 +21,7 @@ export interface MdcCardPrimaryContentProps
     props,
     children
   ) => {
-    return <div {...mdcCardPrimaryContent({ ...props })}>{children}</div>;
+    const { tag: Tag = "div", ...rest } = { ...props };
+    return <Tag {...mdcCardPrimaryContent(rest)}>{children}</Tag>;
   };
   
