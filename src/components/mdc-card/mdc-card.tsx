@@ -13,7 +13,7 @@ export class MdcCard implements ComponentInterface {
   /**
    * Enables an outline on the card.
    */
-  @Prop() outlined: MdcCardProps["outlined"];
+  @Prop() outlined: MdcCardProps["outlined"] = false;
 
   render() {
     return (

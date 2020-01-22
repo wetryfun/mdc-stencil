@@ -45,9 +45,9 @@ Check out an [example](./mdc-card.html)
 
 ## Properties
 
-| Property   | Attribute  | Description                     | Type      | Default     |
-| ---------- | ---------- | ------------------------------- | --------- | ----------- |
-| `outlined` | `outlined` | Enables an outline on the card. | `boolean` | `undefined` |
+| Property   | Attribute  | Description                     | Type      | Default |
+| ---------- | ---------- | ------------------------------- | --------- | ------- |
+| `outlined` | `outlined` | Enables an outline on the card. | `boolean` | `false` |
 
 
 ## Slots
